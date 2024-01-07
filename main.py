@@ -159,7 +159,7 @@ def playSong(songname, cursor):
 
 
 def showPlaylistSongs(username, playlistname, cursor):
-    cmd = "select s.Title_Song, u.Name_User from songs s, users u, PS ps, playlists p where s.ID_Song = ps.id_ps_song and ps.id_ps_playlist = p.id_playlist and p.name_playlist = 'Women in music' and s.ID_Artist = u.ID_User and p.id_maker = (select ID_user from users where name_user = '" + username + "')"
+    cmd = "select distinct s.Title_Song, u.Name_User from songs s, users u, PS ps, playlists p where s.ID_Song = ps.id_ps_song and ps.id_ps_playlist = p.id_playlist and p.name_playlist = 'Women in music' and s.ID_Artist = u.ID_User and p.id_maker = (select ID_user from users where name_user = '" + username + "')"
     cursor.execute(cmd)
     rows = cursor.fetchall()
     song_artists_dict = {}
